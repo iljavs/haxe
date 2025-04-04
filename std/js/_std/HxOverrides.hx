@@ -56,7 +56,7 @@ class HxOverrides {
 
 	@:pure
 	static function cca(s:String, index:Int):Null<Int> {
-		var x = (cast s).charCodeAt(index);
+		var x = (cast s : js.lib.NativeString).charCodeAt(index);
 		if (x != x) // fast isNaN
 			return js.Lib.undefined; // isNaN will still return true
 		return x;

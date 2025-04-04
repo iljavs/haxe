@@ -19,6 +19,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
+import js.lib.NativeString;
+
 @:coreApi class EReg {
 	var r:HaxeRegExp;
 
@@ -84,7 +86,7 @@
 	}
 
 	public inline function replace(s:String, by:String):String {
-		return (cast s).replace(r, by);
+		return (cast s : NativeString).replace(r, by);
 	}
 
 	public function map(s:String, f:EReg->String):String {
@@ -112,7 +114,7 @@
 	}
 
 	public static inline function escape(s:String):String {
-		return (cast s).replace(escapeRe, "\\$&");
+		return (cast s : NativeString).replace(escapeRe, "\\$&");
 	}
 
 	static var escapeRe = new js.lib.RegExp("[.*+?^${}()|[\\]\\\\]", "g");
